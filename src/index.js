@@ -1,13 +1,17 @@
-//Impure function
-const minAge = 20
-function isEligible1(age){
-  return age > minAge;
-}
+const person = {name:"John",
+          address:
+          {
+            city:"SF",country:"USA"}
+          }
+// const updated = Object.assign({},person,{name:"Bob", age:"30"})
+// const updated = {...person,name:"Bob", age:"30"} //spread operator shallow copy
+const updated = {...person,
+  address:{
+    ...person.address,
+    city:"SF"
 
-//Pure function
-function isEligible2(age,minAge){
-  return age > minAge;
-}
-
-console.log(isEligible1(21))
-console.log(isEligible2(21, 19))
+  },
+  name:"Bob", age:"30"} //spread operator deep copy
+// updated.address.city = "NY"
+console.log(updated)
+// console.log(person)
