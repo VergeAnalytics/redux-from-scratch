@@ -1,16 +1,13 @@
-const { compose, pipe} = require("lodash/fp")
+const { pipe} = require("lodash/fp")
 
 
 //functional
 
 const trim = str => str.trim()
-const wrapInDiv = str => `<div>${str}</div>`
+// const wrapInSpan = str => `<span>${str}</span>` // Currying in effetive approach
+const wrap = type => str => `<${type}>${str}</${type}>`
 const toLowerCase = str => str.toLowerCase()
 
-
-//HOC composition of given functions
-const transform = pipe(trim,toLowerCase,wrapInDiv) // Left -> Right
-const transform1 = compose(toLowerCase,wrapInDiv, trim) //Right -> Left
+const transform = pipe(trim,toLowerCase,wrap("span")) 
 
 console.log(transform("    Hello World    "))
-console.log(transform1("    Hello World    "))
