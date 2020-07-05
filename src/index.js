@@ -1,4 +1,14 @@
-let numbers = [1,2,3]
-console.log(numbers.map(number => number * 2 ))
 
-setTimeout(()=>console.log("Hello world"), 1000)
+//Non functional
+let input = "    Javascript    "
+let output = "<div>"+input.trim()+"</div>"
+console.log(output)
+
+
+
+//functional
+
+const trim = str => str.trim()
+const wrapInDiv = str => `<div>${str}</div>`
+const toLowerCase = str => str.toLowerCase()
+console.log(toLowerCase(wrapInDiv(trim("    Hello World    "))))
