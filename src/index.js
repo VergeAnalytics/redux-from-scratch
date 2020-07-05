@@ -1,9 +1,4 @@
-
-//Non functional
-let input = "    Javascript    "
-let output = "<div>"+input.trim()+"</div>"
-console.log(output)
-
+const { compose, pipe} = require("lodash/fp")
 
 
 //functional
@@ -11,4 +6,11 @@ console.log(output)
 const trim = str => str.trim()
 const wrapInDiv = str => `<div>${str}</div>`
 const toLowerCase = str => str.toLowerCase()
-console.log(toLowerCase(wrapInDiv(trim("    Hello World    "))))
+
+
+//HOC composition of given functions
+const transform = pipe(trim,toLowerCase,wrapInDiv) // Left -> Right
+const transform1 = compose(toLowerCase,wrapInDiv, trim) //Right -> Left
+
+console.log(transform("    Hello World    "))
+console.log(transform1("    Hello World    "))
