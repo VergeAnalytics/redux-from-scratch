@@ -1,13 +1,13 @@
-const { pipe} = require("lodash/fp")
+//Impure function
+const minAge = 20
+function isEligible1(age){
+  return age > minAge;
+}
 
+//Pure function
+function isEligible2(age,minAge){
+  return age > minAge;
+}
 
-//functional
-
-const trim = str => str.trim()
-// const wrapInSpan = str => `<span>${str}</span>` // Currying in effetive approach
-const wrap = type => str => `<${type}>${str}</${type}>`
-const toLowerCase = str => str.toLowerCase()
-
-const transform = pipe(trim,toLowerCase,wrap("span")) 
-
-console.log(transform("    Hello World    "))
+console.log(isEligible1(21))
+console.log(isEligible2(21, 19))
